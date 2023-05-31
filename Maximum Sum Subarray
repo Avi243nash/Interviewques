@@ -1,0 +1,46 @@
+Given an array arr of size N. The task is to find the sum of the contiguous subarray within a arr with the largest sum.
+
+Input Format
+First line consists of an integer n
+
+Second line consists of n spaced integers
+
+Output Format
+Print the maximum subarray sum present in the array
+
+Solution :
+import java.util.*;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int[] arr = new int[n];
+    for(int i = 0; i < n; i++) 
+	{
+		arr[i] = sc.nextInt();
+	}
+    sc.close();
+    System.out.println(maxSubArraySum(arr));
+  }
+
+  // Function Call
+  static int maxSubArraySum(int a[]) {
+	int l = a.length;
+	int max = Integer.MIN_VALUE;
+	int max_val = 0;
+	for(int i = 0; i<l ;i++)
+		{
+			max_val += a[i];
+			if(max<max_val)
+			{
+				max = max_val;
+			}
+			if(max_val <0)
+			{
+				max_val = 0;
+			}
+		}
+	  return max;
+  }
+}
