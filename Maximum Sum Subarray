@@ -3,7 +3,7 @@ Input Format
 First line consists of an integer n
 Second line consists of n spaced integers
 Output Format
-Print the maximum subarray sum present in the array
+Print the maximum subarray sum present in the array 
 ----------------------------------------------------------------------------------------------------------------------------------
 Solution :
 import java.util.*;
