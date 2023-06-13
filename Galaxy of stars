@@ -1,0 +1,68 @@
+Bob wants to build a star pattern for a given odd number.
+
+The pattern for ‘N’ = 7 will look like this:
+
+*
+**
+***
+****
+***
+**
+*
+Your task is that for a given odd integer 'N', print the pattern.
+
+Input Format
+The first line contains an integer ‘N’, denoting the number of rows.
+
+Output Format
+Print 'N' strings denoting the pattern.
+
+Example 1
+Input
+
+3
+Output
+
+*
+**
+*
+Explanation
+
+We need to print a triangle-like pattern wherein each line, the number of stars will be increasing till the central 
+row and then it starts decreasing. So for n=3, till 2nd-row stars increase and then start decreasing.
+-------------------------------------------------------------------------------------------------------------------------
+Solution:
+
+import java.util.*;
+
+class Solution {
+
+    static void solve(int n) {
+        int mid = (n+1)/2;
+		for(int i=1;i<=mid;i++)
+			{
+				for(int j=1;j<=i;j++)
+					{
+						System.out.print("*");
+					}
+				System.out.println();
+			}
+		for(int i=mid-1;i>=1;i--)
+			{
+				for(int j=1;j<=i;j++)
+					{
+						System.out.print("*");
+					}
+				System.out.println();
+			}
+		
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws Throwable {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Solution.solve(n);
+    }
+}
