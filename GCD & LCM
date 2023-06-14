@@ -1,0 +1,54 @@
+GCD and LCM
+Write a java program to print the Greatest Common Divisor (GCD) and Lowest Common Multiple (LCM) of two numbers
+
+You are required to print the Greatest Common Divisor (GCD) of two numbers.
+You are also required to print the Lowest Common Multiple (LCM) of the same numbers.
+Take input "num1" and "num2" as the two numbers.
+Print their GCD and LCM.
+Input Format
+Any two integer, the numbers whose GCD and LCM we have to find
+
+num1 
+num2
+Output Format
+a
+b
+.. where ''''''''''''''''a'''''''''''''''' and ''''''''''''''''b'''''''''''''''' are the GCD and LCM respectively.
+Example 1
+Input
+
+8
+12
+Output
+
+4
+24
+----------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------
+SOLUTION:
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+public class Main
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner sc = new Scanner(System.in);
+		int a = sc.nextInt();
+		int b = sc.nextInt();
+		int gcd =0;
+		for(int i=1;i<=a && i<=b;i++)
+			{
+				if(a%i == 0 && b%i == 0 )
+				{
+					gcd = i;
+				}
+			}
+		int lcm = (a*b)/gcd;
+		System.out.println(gcd);
+		System.out.println(lcm);
+		
+	}
+}
+
