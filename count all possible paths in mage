@@ -1,0 +1,80 @@
+Count Maze Path
+Given two integers N and M, representing the number of rows and columns in the maze respectively, find all the paths to go from the top left cell to the bottom right cell.
+
+Only two moves are allowed 1-step horizontal to the right and 1-step vertically down.
+
+Complete the body of the print countMazePath function - without changing the signature to print the count of all the possible paths from top left to bottom right of the matrix.
+
+Note The online judge can't force you to write the function recursively but that is what the spirit of the question is. Write recursive and not iterative logic. The purpose of the question is to aid learning recursion and not test you.
+
+Input Format
+The first line contains the value of N.
+
+The second line contains the value of M.
+
+Output Format
+Print all possible paths.
+
+Example 1
+Input
+
+2
+2
+Output
+
+2
+Explanation
+
+We first go right then down, which gives first path.
+
+One other path is to go down then right which second path.
+
+Total paths 2.
+
+Example 2
+Input
+
+1
+2
+Output
+
+1
+Explanation
+
+The only possible path is to go two steps to the right, which gives is total paths as 1.
+
+Constraints
+1 <= N <= 10
+
+1 <= M <= 10
+  
+----------------------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------
+
+  import java.io.*;
+import java.util.*;
+
+public class Main{
+    static int countMazePath(int n, int m)
+    {
+        //Write your code here
+		if(n == 1 && m == 1)
+			return 1;
+		if(n<1 || m<1)
+			return 0;
+		//horizontal 
+		int row = countMazePath(n,m-1);
+		//vertical or column
+		int col = countMazePath(n-1,m);
+		return row+col;
+    }
+	public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        int m, n;
+        n = sc.nextInt();
+        m = sc.nextInt();
+        System.out.println(countMazePath(n, m));
+    }
+}
+  
