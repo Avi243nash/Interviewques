@@ -1,0 +1,156 @@
+Palindrome Linked List
+Given the head of a linked list, check whether the linked list is palindromic or not.
+
+Linked List Structure:
+
+public class Node
+{
+    int data;
+    Node next;
+    Node(int d) {data = d; next = null; }
+}   
+public class LinkedList
+{
+    Node head;  
+    Node tail;
+}
+If your list is [5, 4, 4, 5], the output should be YES.
+
+Input Format
+The first integer denotes n, the number of elements in the linked list.
+
+The next n space separated integers denote the elements of the linked list.
+
+Output Format
+Output YES if the list is palindromic, else output NO.
+
+Example 1
+Input
+
+4
+5 4 4 5
+Output
+
+YES
+Explanation
+
+The given list is a palindrome
+
+Example 2
+Input
+
+2
+5 7
+Output
+
+NO
+Explanation
+
+The given list is not a palindrome
+
+Constraints
+1 <= n <= 10^5
+-------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) throws Throwable {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        LinkedList llist= new LinkedList(); 
+        int a1=sc.nextInt();
+        Node head= new Node(a1);
+        llist.addToTheLast(head);
+        for (int i = 1; i < n; i++) 
+        {
+            int a = sc.nextInt(); 
+            llist.addToTheLast(new Node(a));
+        }
+            
+        Solution A = new Solution();
+        A.checkLinkedListPalindrome(llist.head);
+        
+    }
+}
+
+class Node
+    {
+        int data;
+        Node next;
+        Node(int d) {data = d; next = null; }
+    }
+    
+class LinkedList
+{
+    Node head;  
+    Node tail;
+    public void addToTheLast(Node node) 
+    {
+      if (head == null) 
+      {
+       head = node;
+       tail = node;
+      } 
+      else 
+      {
+       tail.next = node;
+       tail = node;
+      }
+    }
+      void printList()
+    {
+        Node temp = head;
+        while (temp != null)
+        {
+           System.out.print(temp.data+" ");
+           temp = temp.next;
+        }  
+        System.out.println();
+    }
+    
+}
+
+class Solution
+{
+    static void checkLinkedListPalindrome(Node head)
+    {
+        int  len = 0;
+		Node cur = head;
+		while(cur!=null)
+			{
+				cur = cur.next;
+				len++;
+			}
+		int cnt = len/2;
+		cur = head;
+		Node prev = null;
+		while(cnt>0)
+			{
+				Node next = cur.next;
+				cur.next = prev;
+				prev = cur;
+				cur = next;
+				cnt--;
+			}
+		if(len%2 == 1)
+		{
+			cur = cur.next;
+		}
+		while(cur!=null && prev!=null)
+			{
+				if(cur.data != prev.data)
+				{
+					System.out.println("NO");
+					return;
+				}
+				prev = prev.next;
+				cur = cur.next;
+			}
+		System.out.println("YES");
+		return;
+		
+    }
+    
+}
